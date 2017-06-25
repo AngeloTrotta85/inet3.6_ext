@@ -3,6 +3,7 @@
 	<name>inet3-6_ext</name>
 	<comment></comment>
 	<projects>
+		<project>inet</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
