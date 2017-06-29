@@ -2,7 +2,7 @@
 # OMNeT++/OMNEST Makefile for inet3-6_ext
 #
 # This file was generated with the command:
-#  opp_makemake -f --deep -KINET_PROJ=/media/angelo/BigLinux/Programs/OMNeT++/omnetpp-5.1.1/samples/inet -DINET_IMPORT -I$$\(INET_PROJ\)/src -L$$\(INET_PROJ\) -L$$\(INET_PROJ\)/out/$$\(CONFIGNAME\)/src -linet
+#  opp_makemake -f --deep -KINET_PROJ=/media/angelo/BigLinux/Programs/OMNeT++/omnetpp-5.1.1/samples/inet -DINET_IMPORT -I$$\(INET_PROJ\)/src -L$$\(INET_PROJ\)/out/$$\(CONFIGNAME\)/src -linet
 #
 
 # Name of target to be created (-o option)
@@ -21,7 +21,7 @@ INCLUDE_PATH = -I$(INET_PROJ)/src
 EXTRA_OBJS =
 
 # Additional libraries (-L, -l options)
-LIBS = $(LDFLAG_LIBPATH)$(INET_PROJ) $(LDFLAG_LIBPATH)$(INET_PROJ)/out/$(CONFIGNAME)/src  -linet
+LIBS = $(LDFLAG_LIBPATH)$(INET_PROJ)/out/$(CONFIGNAME)/src  -linet
 
 # Output directory
 PROJECT_OUTPUT_DIR = ../out
@@ -29,7 +29,7 @@ PROJECTRELATIVE_PATH = src
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc, .msg and .sm files
-OBJS = $O/inet/physicallayer/ieee80211/packetlevel/Ieee80211ScalarReceiverExt.o
+OBJS = $O/inet/linklayer/ieee80211/mac/coordinationfunction/DcfExt.o $O/inet/linklayer/ieee80211/mgmt/Ieee80211MgmtAdhocExt.o $O/inet/physicallayer/ieee80211/packetlevel/Ieee80211ScalarReceiverExt.o
 
 # Message files
 MSGFILES =
@@ -63,7 +63,7 @@ include $(CONFIGFILE)
 # Simulation kernel and user interface libraries
 OMNETPP_LIBS = $(OPPMAIN_LIB) $(USERIF_LIBS) $(KERNEL_LIBS) $(SYS_LIBS)
 ifneq ($(TOOLCHAIN_NAME),clangc2)
-LIBS += -Wl,-rpath,$(abspath $(INET_PROJ)) -Wl,-rpath,$(abspath $(INET_PROJ)/out/$(CONFIGNAME)/src)
+LIBS += -Wl,-rpath,$(abspath $(INET_PROJ)/out/$(CONFIGNAME)/src)
 endif
 
 COPTS = $(CFLAGS) $(IMPORT_DEFINES) -DINET_IMPORT $(INCLUDE_PATH) -I$(OMNETPP_INCL_DIR)
