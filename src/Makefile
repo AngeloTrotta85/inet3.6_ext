@@ -29,10 +29,17 @@ PROJECTRELATIVE_PATH = src
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc, .msg and .sm files
-OBJS = $O/inet/linklayer/ieee80211/mac/coordinationfunction/DcfExt.o $O/inet/linklayer/ieee80211/mgmt/Ieee80211MgmtAdhocExt.o $O/inet/networklayer/ipv4/IPv4Ext.o $O/inet/physicallayer/ieee80211/packetlevel/Ieee80211ScalarReceiverExt.o
+OBJS = \
+    $O/inet/linklayer/ieee80211/mac/coordinationfunction/DcfExt.o \
+    $O/inet/linklayer/ieee80211/mgmt/Ieee80211MgmtAdhocExt.o \
+    $O/inet/networklayer/ipv4/IPv4Ext.o \
+    $O/inet/physicallayer/ieee80211/packetlevel/Ieee80211ScalarReceiverExt.o \
+    $O/inet/transportlayer/udp/UDPExt.o \
+    $O/inet/transportlayer/contract/udp/UDPDataIndicationExt_m.o
 
 # Message files
-MSGFILES =
+MSGFILES = \
+    inet/transportlayer/contract/udp/UDPDataIndicationExt.msg
 
 # SM files
 SMFILES =
