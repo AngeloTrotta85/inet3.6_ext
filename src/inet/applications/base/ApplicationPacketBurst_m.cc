@@ -1,11 +1,27 @@
 //
-// Generated file, do not edit! Created by nedtool 5.0 from inet/applications/base/ApplicationPacketBurst.msg.
+// Generated file, do not edit! Created by nedtool 5.1 from inet/applications/base/ApplicationPacketBurst.msg.
 //
 
 // Disable warnings about unused variables, empty switch stmts, etc:
 #ifdef _MSC_VER
 #  pragma warning(disable:4101)
 #  pragma warning(disable:4065)
+#endif
+
+#if defined(__clang__)
+#  pragma clang diagnostic ignored "-Wshadow"
+#  pragma clang diagnostic ignored "-Wconversion"
+#  pragma clang diagnostic ignored "-Wunused-parameter"
+#  pragma clang diagnostic ignored "-Wc++98-compat"
+#  pragma clang diagnostic ignored "-Wunreachable-code-break"
+#  pragma clang diagnostic ignored "-Wold-style-cast"
+#elif defined(__GNUC__)
+#  pragma GCC diagnostic ignored "-Wshadow"
+#  pragma GCC diagnostic ignored "-Wconversion"
+#  pragma GCC diagnostic ignored "-Wunused-parameter"
+#  pragma GCC diagnostic ignored "-Wold-style-cast"
+#  pragma GCC diagnostic ignored "-Wsuggest-attribute=noreturn"
+#  pragma GCC diagnostic ignored "-Wfloat-conversion"
 #endif
 
 #include <iostream>
@@ -121,13 +137,13 @@ void doParsimArrayUnpacking(omnetpp::cCommBuffer *b, T *t, int n)
 template<typename T>
 void doParsimPacking(omnetpp::cCommBuffer *, const T& t)
 {
-    throw omnetpp::cRuntimeError("Parsim error: no doParsimPacking() function for type %s", omnetpp::opp_typename(typeid(t)));
+    throw omnetpp::cRuntimeError("Parsim error: No doParsimPacking() function for type %s", omnetpp::opp_typename(typeid(t)));
 }
 
 template<typename T>
 void doParsimUnpacking(omnetpp::cCommBuffer *, T& t)
 {
-    throw omnetpp::cRuntimeError("Parsim error: no doParsimUnpacking() function for type %s", omnetpp::opp_typename(typeid(t)));
+    throw omnetpp::cRuntimeError("Parsim error: No doParsimUnpacking() function for type %s", omnetpp::opp_typename(typeid(t)));
 }
 
 }  // namespace omnetpp
@@ -162,9 +178,9 @@ inline std::ostream& operator<<(std::ostream& out, const std::vector<T,A>& vec)
     return out;
 }
 
-Register_Class(ApplicationPacketBurst);
+Register_Class(ApplicationPacketBurst)
 
-ApplicationPacketBurst::ApplicationPacketBurst(const char *name, int kind) : ::omnetpp::cPacket(name,kind)
+ApplicationPacketBurst::ApplicationPacketBurst(const char *name, short kind) : ::omnetpp::cPacket(name,kind)
 {
     this->sequenceNumber = 0;
     this->timeSent = 0;
@@ -261,6 +277,7 @@ class ApplicationPacketBurstDescriptor : public omnetpp::cClassDescriptor
     virtual const char *getFieldProperty(int field, const char *propertyname) const override;
     virtual int getFieldArraySize(void *object, int field) const override;
 
+    virtual const char *getFieldDynamicTypeString(void *object, int field, int i) const override;
     virtual std::string getFieldValueAsString(void *object, int field, int i) const override;
     virtual bool setFieldValueAsString(void *object, int field, int i, const char *value) const override;
 
@@ -268,7 +285,7 @@ class ApplicationPacketBurstDescriptor : public omnetpp::cClassDescriptor
     virtual void *getFieldStructValuePointer(void *object, int field, int i) const override;
 };
 
-Register_ClassDescriptor(ApplicationPacketBurstDescriptor);
+Register_ClassDescriptor(ApplicationPacketBurstDescriptor)
 
 ApplicationPacketBurstDescriptor::ApplicationPacketBurstDescriptor() : omnetpp::cClassDescriptor("inet::ApplicationPacketBurst", "omnetpp::cPacket")
 {
@@ -403,6 +420,20 @@ int ApplicationPacketBurstDescriptor::getFieldArraySize(void *object, int field)
     ApplicationPacketBurst *pp = (ApplicationPacketBurst *)object; (void)pp;
     switch (field) {
         default: return 0;
+    }
+}
+
+const char *ApplicationPacketBurstDescriptor::getFieldDynamicTypeString(void *object, int field, int i) const
+{
+    omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
+    if (basedesc) {
+        if (field < basedesc->getFieldCount())
+            return basedesc->getFieldDynamicTypeString(object,field,i);
+        field -= basedesc->getFieldCount();
+    }
+    ApplicationPacketBurst *pp = (ApplicationPacketBurst *)object; (void)pp;
+    switch (field) {
+        default: return nullptr;
     }
 }
 

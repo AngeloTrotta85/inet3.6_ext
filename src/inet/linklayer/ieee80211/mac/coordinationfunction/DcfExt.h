@@ -33,6 +33,10 @@ class INET_API DcfExt : public Dcf
 
     public:
         virtual ~DcfExt();
+
+
+        virtual double getQueuePerc() {return (((double) pendingQueue->getLength()) / ((double) pendingQueue->getMaxQueueSize()));}
+        virtual double getQueueAbs() {return pendingQueue->getLength();}
 };
 
 } /* namespace ieee80211 */

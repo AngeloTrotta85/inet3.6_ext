@@ -17,7 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <applications/udpapp/UDPStatisticsApp.h>
+#include "UDPStatisticsApp.h"
 #include "inet/networklayer/common/L3AddressResolver.h"
 #include "inet/common/ModuleAccess.h"
 #include "inet/common/lifecycle/NodeOperations.h"
@@ -61,7 +61,7 @@ void UDPStatisticsApp::initialize(int stage)
         remove(fileStatHeader);
 
         mob = check_and_cast<IMobility *>(getParentModule()->getSubmodule("mobility"));
-        dcfMac = check_and_cast<ieee80211::DcfUpperMacExt *>(getParentModule()->getSubmodule("wlan", 0)->getSubmodule("mac")->getSubmodule("upperMac"));
+        dcfMac = check_and_cast<ieee80211::DcfExt *>(getParentModule()->getSubmodule("wlan", 0)->getSubmodule("mac")->getSubmodule("dcf"));
         udpbb = check_and_cast<UDPBasicBurstExt *>(getParentModule()->getSubmodule("udpApp", 1));
 
         radioTransmitter = check_and_cast<physicallayer::Ieee80211TransmitterBase *>(getParentModule()->getSubmodule("wlan", 0)->getSubmodule("radio")->getSubmodule("transmitter"));

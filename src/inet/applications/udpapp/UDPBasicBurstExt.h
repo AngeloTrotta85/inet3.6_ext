@@ -26,7 +26,7 @@
 
 #include "inet/applications/udpapp/UDPBasicBurst.h"
 
-#include "inet/applications/base/ApplicationPacketBurst_m.h"
+#include "../base/ApplicationPacketBurst_m.h"
 
 namespace inet {
 

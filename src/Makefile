@@ -30,15 +30,21 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc, .msg and .sm files
 OBJS = \
+    $O/inet/applications/udpapp/UDPBasicBurstExt.o \
+    $O/inet/applications/udpapp/UDPStatisticsApp.o \
     $O/inet/linklayer/ieee80211/mac/coordinationfunction/DcfExt.o \
     $O/inet/linklayer/ieee80211/mgmt/Ieee80211MgmtAdhocExt.o \
     $O/inet/networklayer/ipv4/IPv4Ext.o \
     $O/inet/physicallayer/ieee80211/packetlevel/Ieee80211ScalarReceiverExt.o \
     $O/inet/transportlayer/udp/UDPExt.o \
+    $O/inet/applications/base/ApplicationPacketBurst_m.o \
+    $O/inet/applications/base/ApplicationPacketExt_m.o \
     $O/inet/transportlayer/contract/udp/UDPDataIndicationExt_m.o
 
 # Message files
 MSGFILES = \
+    inet/applications/base/ApplicationPacketBurst.msg \
+    inet/applications/base/ApplicationPacketExt.msg \
     inet/transportlayer/contract/udp/UDPDataIndicationExt.msg
 
 # SM files

@@ -22,15 +22,15 @@
 #include "inet/common/INETDefs.h"
 
 
-#include <ieee80211/mac/DcfUpperMacExt.h>
+#include "../../linklayer/ieee80211/mac/coordinationfunction/DcfExt.h"
 
 #include "inet/applications/udpapp/UDPBasicBurst.h"
-#include "inet/applications/udpapp/UDPBasicBurstExt.h"
+#include "UDPBasicBurstExt.h"
 #include "inet/transportlayer/contract/udp/UDPSocket.h"
 #include "inet/physicallayer/ieee80211/packetlevel/Ieee80211TransmitterBase.h"
 
-#include "inet/transportlayer/contract/udp/UDPDataIndicationExt_m.h"
-#include "inet/applications/base/ApplicationPacketExt_m.h"
+#include "../../transportlayer/contract/udp/UDPDataIndicationExt_m.h"
+#include "../base/ApplicationPacketExt_m.h"
 
 #include "inet/mobility/contract/IMobility.h"
 
@@ -117,7 +117,7 @@ private:
   bool onlyMyInfoStat;
 
   IMobility *mob;
-  ieee80211::DcfUpperMacExt *dcfMac;
+  ieee80211::DcfExt *dcfMac;
   UDPBasicBurstExt *udpbb;
   physicallayer::Ieee80211TransmitterBase *radioTransmitter;
 
